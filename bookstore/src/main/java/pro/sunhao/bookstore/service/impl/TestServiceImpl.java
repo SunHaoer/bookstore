@@ -1,8 +1,9 @@
-package pro.sunhao.bookstore.service;
+package pro.sunhao.bookstore.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pro.sunhao.bookstore.mapper.TestDao;
+import pro.sunhao.bookstore.dao.TestDao;
+import pro.sunhao.bookstore.service.TestService;
 
 @Service
 public class TestServiceImpl implements TestService {

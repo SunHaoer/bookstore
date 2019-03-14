@@ -1,0 +1,1 @@
+angular.module('bookstore', ['homePage', 'ngRoute', 'registerPage', 'replacePage', 'deletePage', 'common','doubleCheck','loginPage']);

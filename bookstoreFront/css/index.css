@@ -1,0 +1,32 @@
+@charset "utf-8";
+{
+	border: 1px solid #999;
+}
+body{
+	margin:0px;
+	font-family:"微软雅黑";
+}
+#index #line1,#index #line2,#index #line3,#index #line4,#index #line5{
+	width:1200px;
+	margin:0px auto;
+}
+
+/*第五行*/
+#index #line5{
+	width:1200px;
+	height:80px;
+	border-top: 1px solid #EEEEEE;
+}
+#index #line5 img{
+	line-height:80px;
+	vertical-align: middle;
+}
+#index #line5 span{
+	line-height:80px;
+	vertical-align: middle;
+	color:#666666;
+	font-weight:bold;
+}
+#index #line5 #line5_2,#index #line5 #line5_3,#index #line5 #line5_4{
+	margin-left:128px;
+}

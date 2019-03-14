@@ -1,4 +1,4 @@
-package pro.sunhao.bookstore.mapper;
+package pro.sunhao.bookstore.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
