@@ -2,9 +2,9 @@ package pro.sunhao.bookstore.util;
 
 import com.alibaba.fastjson.JSONObject;
 
-public class operateJson {
+public class OperateJson {
 
-    public static void putParamterNull(JSONObject outputJson) {
+    public static void putParameterNull(JSONObject outputJson) {
         outputJson.put("message", "parameter is null");
     }
 

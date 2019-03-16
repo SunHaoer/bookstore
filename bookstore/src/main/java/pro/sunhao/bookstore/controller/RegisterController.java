@@ -2,7 +2,6 @@ package pro.sunhao.bookstore.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pro.sunhao.bookstore.service.RegisterService;
 
@@ -30,7 +29,8 @@ public class RegisterController {
     @RequestMapping(value="/getPhoneCode")
     public String getPhoneCode(@RequestParam(defaultValue="")String userPhone) {
         JSONObject outputJson = registerService.getPhoneCodeResultModel(userPhone);
-
+        System.out.println(outputJson.get("phoneCode"));
+        outputJson.remove("phoneCode");
         return outputJson.toString();
     }
 

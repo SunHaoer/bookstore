@@ -9,7 +9,7 @@ import pro.sunhao.bookstore.dao.RegisterDao;
 import pro.sunhao.bookstore.info.PhoneCodeConfig;
 import pro.sunhao.bookstore.service.RegisterService;
 import pro.sunhao.bookstore.util.HttpUtils;
-import pro.sunhao.bookstore.util.operateJson;
+import pro.sunhao.bookstore.util.OperateJson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,19 +32,19 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public JSONObject validateUserNameResultModel(String username) {
         JSONObject outputJson = new JSONObject();
-        operateJson.putSuccess(outputJson, false);
+        OperateJson.putSuccess(outputJson, false);
         if(username.isEmpty()) {
-            operateJson.putParamterNull(outputJson);
+            OperateJson.putParameterNull(outputJson);
         } else {
             try {
-                operateJson.putSuccess(outputJson, true);
+                OperateJson.putSuccess(outputJson, true);
                 outputJson.put("isLegal", false);
                 Long userId = registerDao.selectUserByUserNameOrPhone(username);
                 if(userId != null) {
                     outputJson.put("isLegal", true);
                 }
             } catch (Exception e) {
-                operateJson.putDataBaseError(outputJson);
+                OperateJson.putDataBaseError(outputJson);
                 e.printStackTrace();
             }
         }
@@ -54,9 +54,9 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public JSONObject getPhoneCodeResultModel(String phone) {
         JSONObject outputJson = new JSONObject();
-        operateJson.putSuccess(outputJson, false);
+        OperateJson.putSuccess(outputJson, false);
         if(phone.isEmpty()) {
-            operateJson.putParamterNull(outputJson);
+            OperateJson.putParameterNull(outputJson);
         } else {
             Pattern phonePattern = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0-9])|(14[5,7])| (17[0,1,3,5-8]))\\d{8}$");
             Matcher matcher = phonePattern.matcher(phone);
@@ -74,7 +74,7 @@ public class RegisterServiceImpl implements RegisterService {
                     }
                 }
             } catch (Exception e) {
-                operateJson.putDataBaseError(outputJson);
+                OperateJson.putDataBaseError(outputJson);
                 e.printStackTrace();
             }
         }
@@ -85,15 +85,16 @@ public class RegisterServiceImpl implements RegisterService {
         String host = PhoneCodeConfig.host;
         String path = PhoneCodeConfig.path;
         String method = PhoneCodeConfig.method;
-        String appcode = PhoneCodeConfig.appcode;
+        String appCode = PhoneCodeConfig.appcode;
         String phoneCode = PhoneCodeConfig.getPhoneCode(4);
         Map<String, String> headers = new HashMap<String, String>();
         // 最后在header中的格式(中间是英文空格)为Authorization:APPCODE 83359fd73fe94948385f570e3c139105
-        headers.put("Authorization", "APPCODE " + appcode);
+        headers.put("Authorization", "APPCODE " + appCode);
         Map<String, String> querys = new HashMap<String, String>();
         querys.put("mobile", phoneNum);
         querys.put("content", PhoneCodeConfig.getPhoneMessageContent(phoneNum, phoneCode));
         HttpResponse response = HttpUtils.doGet(host, path, method, headers, querys);
+        outputJson.put("phoneCode", phoneCode);
         //System.out.println(response.toString());
         //获取response的body
         System.out.println(EntityUtils.toString(response.getEntity()));
