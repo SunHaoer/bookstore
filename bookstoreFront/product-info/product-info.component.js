@@ -1,7 +1,7 @@
 angular.
-    module('registerPage').
-    component('registerPage', {
-        templateUrl: 'register-page/register-page.template.html',
+    module('productInfo').
+    component('productInfo', {
+        templateUrl: 'product-info/product-info.template.html',
         controller: ['$scope', '$http', '$location', function RegisterPageCtrl($scope, $http, $location) {
            
             

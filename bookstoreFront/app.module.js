@@ -1,1 +1,1 @@
-angular.module('bookstore', ['homePage', 'ngRoute', 'registerPage', 'replacePage', 'deletePage', 'common','doubleCheck','loginPage']);
+angular.module('bookstore', ['homePage', 'ngRoute', 'registerPage', 'loginPage', 'productList', 'productInfo', 'cartPage']);
