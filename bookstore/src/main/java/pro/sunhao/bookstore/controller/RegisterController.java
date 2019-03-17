@@ -7,7 +7,6 @@ import pro.sunhao.bookstore.service.RegisterService;
 
 import javax.servlet.http.HttpSession;
 
-@CrossOrigin
 @RestController
 @RequestMapping(value="/register", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT}, produces = {"text/html;charset=utf-8"})
 public class RegisterController {
@@ -25,10 +24,9 @@ public class RegisterController {
     }
 
     @RequestMapping(value="/validateUsername")
-    @ResponseBody
     public String validateUsername(@RequestParam(defaultValue="")String userUsername) {
         JSONObject outputJson = registerService.validateUserNameResultModel(userUsername);
-        System.out.println("validateUsername");
+        //System.out.println("validateUsername");
         return outputJson.toString();
     }
 
