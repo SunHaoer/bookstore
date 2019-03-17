@@ -1,43 +1,47 @@
 <link rel="stylesheet" href="css/regist.css"/>
 
-<form action="#" method="POST">
+<div id="registerForm">
 	<h1>欢迎注册EasyMall</h1>
 	<table>
 		<tr>
 			<td class="tds">用户名：</td>
 			<td>
-				<input type="text" name="username" />
+				<input ng-model="user.username" type="text" name="username" ng-blur="validateUsername()" />
 			</td>
 		</tr>
 		<tr>
 			<td class="tds">密码：</td>
 			<td>
-				<input type="password" name="password" />
+				<input ng-model="user.password" type="password" name="password" />
 			</td>
 		</tr>
 		<tr>
 			<td class="tds">确认密码：</td>
 			<td>
-				<input type="password" name="password2" />
+				<input ng-model="password2" type="password" name="password2" />
 			</td>
 		</tr>
 		<tr>
-			<td class="tds">昵称：</td>
+			<td class="tds">性别：</td>
 			<td>
-				<input type="text" name="nickname" />
+				<select ng-model="user.gender" name="gender" >
+					<option value="0">我要保密</option>
+					<option value="1">我是男生</option>
+					<option value="2">我是女生</option>
+				</select>				
 			</td>
 		</tr>
 		<tr>
-			<td class="tds">邮箱：</td>
+			<td class="tds">手机号：</td>
 			<td>
-				<input type="text" name="email" />
+				<input ng-model="user.phone" type="text" name="phone" />
 			</td>
 		</tr>
 		<tr>
 			<td class="tds">验证码：</td>
 			<td>
-				<input type="text" name="valistr" />
-				<img src="img/regist/yzm.jpg" width="" height="" alt="" />
+				<input ng-model="phoneCode" type="text" name="valistr" />
+				<input type="button" value="点击获取" id="getPoneCodeButton" />
 			</td>
 		</tr>
 		<tr>
@@ -46,4 +50,4 @@
 			</td>
 		</tr>
 	</table>
-</form>
+</div>

@@ -40,7 +40,7 @@ public class RegisterServiceImpl implements RegisterService {
                 OperateJson.putSuccess(outputJson, true);
                 outputJson.put("isLegal", false);
                 Long userId = registerDao.selectUserByUserNameOrPhone(username);
-                if(userId != null) {
+                if(userId == null) {
                     outputJson.put("isLegal", true);
                 }
             } catch (Exception e) {
@@ -95,7 +95,7 @@ public class RegisterServiceImpl implements RegisterService {
         querys.put("content", PhoneCodeConfig.getPhoneMessageContent(phoneNum, phoneCode));
         HttpResponse response = HttpUtils.doGet(host, path, method, headers, querys);
         outputJson.put("phoneCode", phoneCode);
-        //System.out.println(response.toString());
+        System.out.println(response.toString());
         //获取response的body
         System.out.println(EntityUtils.toString(response.getEntity()));
     }

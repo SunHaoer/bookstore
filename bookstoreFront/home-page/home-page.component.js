@@ -5,9 +5,10 @@ component('homePage',{
     controller: ['$scope', '$http', '$location', function ProductListCtrl($scope, $http, $location) {
 		var uri1 = 'http://localhost:8080';
 		var uri = uri1;
-		/*
+		
 		$scope.getProductListModel = function () {
 			$http({
+				withCredentials: true,
 				method: 'GET',
 				url: uri + '/index/getProductListViewModel',
 				params: ({
@@ -25,7 +26,6 @@ component('homePage',{
 			}
 		}
 		$scope.getProductListModel();
-*/
         
     }]
 });
