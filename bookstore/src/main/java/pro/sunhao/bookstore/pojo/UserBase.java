@@ -10,6 +10,13 @@ public class UserBase {
     private String userAddress2;
     private String userAddress3;
 
+    public UserBase(String username, String password, int gender, String phone) {
+        this.userUsername = username;
+        this.userPassword = password;
+        this.userGender = gender;
+        this.userPhone = phone;
+    }
+
     public Long getUserId() {
         return userId;
     }

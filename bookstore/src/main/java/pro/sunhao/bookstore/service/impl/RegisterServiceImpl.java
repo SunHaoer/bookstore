@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pro.sunhao.bookstore.dao.RegisterDao;
 import pro.sunhao.bookstore.info.PhoneCodeConfig;
+import pro.sunhao.bookstore.pojo.UserBase;
 import pro.sunhao.bookstore.service.RegisterService;
 import pro.sunhao.bookstore.util.HttpUtils;
 import pro.sunhao.bookstore.util.OperateJson;
@@ -23,9 +24,29 @@ public class RegisterServiceImpl implements RegisterService {
     RegisterDao registerDao;
 
     @Override
-    public JSONObject saveUserResultModel(String username, String password, int gender) {
+    public JSONObject saveUserResultModel(String username, String password, int gender, String password2, String phone, String phoneCode, String phoneCodeInfo) {
         JSONObject outputJson = new JSONObject();
-        outputJson.put("陈景鸭", "嘎嘎嘎");
+        OperateJson.putSuccess(outputJson, false);
+        //System.out.println(username + " " + password + " " + password2 + " " + phone + " " + phoneCode + " " + phoneCodeInfo + "\n");
+        if(username.isEmpty() || password.isEmpty() || password2.isEmpty() || phoneCode.isEmpty() || phoneCodeInfo == null || phoneCodeInfo.isEmpty()) {
+            OperateJson.putParameterNull(outputJson);
+        } else {
+            if(!password.equals(password2) || !phone.equals(phoneCodeInfo.substring(0, 11)) || !phoneCode.equals(phoneCodeInfo.substring(12, 16))) {
+                OperateJson.putParamterError(outputJson);
+            } else {
+                try {
+                    OperateJson.putSuccess(outputJson, true);
+                    UserBase user = new UserBase(username, password, gender, phone);
+                    registerDao.insertUser(user);
+                    long id = user.getUserId();
+                    System.out.println(id);
+                } catch (Exception e) {
+                    OperateJson.putDataBaseError(outputJson);
+                    e.printStackTrace();
+                }
+            }
+
+        }
         return outputJson;
     }
 
@@ -37,11 +58,12 @@ public class RegisterServiceImpl implements RegisterService {
             OperateJson.putParameterNull(outputJson);
         } else {
             try {
-                OperateJson.putSuccess(outputJson, true);
-                outputJson.put("isLegal", false);
                 Long userId = registerDao.selectUserByUserNameOrPhone(username);
+                OperateJson.putSuccess(outputJson, true);
                 if(userId == null) {
                     outputJson.put("isLegal", true);
+                } else {
+                    outputJson.put("isLegal", false);
                 }
             } catch (Exception e) {
                 OperateJson.putDataBaseError(outputJson);

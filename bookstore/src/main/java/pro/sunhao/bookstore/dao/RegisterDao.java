@@ -6,5 +6,8 @@ import pro.sunhao.bookstore.pojo.UserBase;
 @Repository
 public interface RegisterDao {
 
+    Long insertUser(UserBase user);
+
     Long selectUserByUserNameOrPhone(String inputStr);
+
 }

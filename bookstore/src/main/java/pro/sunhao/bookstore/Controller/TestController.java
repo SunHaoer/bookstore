@@ -1,5 +1,6 @@
 package pro.sunhao.bookstore.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
@@ -29,9 +30,11 @@ public class TestController {
     @ResponseBody
     public String test(HttpSession session) {
         //testService.test("1", "2");
-        System.out.println(session.getAttribute("lala"));
-        session.setAttribute("lala", "haha");
-        System.out.println(session.getAttribute("lala"));
+        //System.out.println(session.getAttribute("lala"));
+        session.setAttribute("lala", "sun,hao");
+        String str = session.getAttribute("lala").toString();
+        System.out.println("sun".equals(str.split(",")[0]));
+        System.out.println("hao".equals(str.split(",")[1]));
         return "嘎嘎";
     }
 

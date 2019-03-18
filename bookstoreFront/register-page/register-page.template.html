@@ -7,25 +7,28 @@
 			<td class="tds">用户名：</td>
 			<td>
 				<input ng-model="user.username" type="text" name="username" ng-blur="validateUsername()" />
+				<span>{{validateUsernameMessage}}</span>
 			</td>
 		</tr>
 		<tr>
 			<td class="tds">密码：</td>
 			<td>
-				<input ng-model="user.password" type="password" name="password" />
+				<input ng-model="user.password" type="password" name="password" ng-blur="validatePassword()" />
+				<span>{{validatePasswordMessage}}</span>
 			</td>
 		</tr>
 		<tr>
 			<td class="tds">确认密码：</td>
 			<td>
-				<input ng-model="password2" type="password" name="password2" />
+				<input ng-model="password2" type="password" name="password2" ng-blur="validatePassword2()" />
+				<span>{{validatePassword2Message}}</span>
 			</td>
 		</tr>
 		<tr>
 			<td class="tds">性别：</td>
 			<td>
 				<select ng-model="user.gender" name="gender" >
-					<option value="0">我要保密</option>
+					<option value="">我要保密</option>
 					<option value="1">我是男生</option>
 					<option value="2">我是女生</option>
 				</select>				
@@ -41,12 +44,13 @@
 			<td class="tds">验证码：</td>
 			<td>
 				<input ng-model="phoneCode" type="text" name="valistr" />
-				<input type="button" value="点击获取" id="getPoneCodeButton" />
+				<input type="button" value="点击获取" id="getPoneCodeButton" ng-click="getPhoneCode()" />
+				<span>{{getPhoneCodeMessage}}</span>
 			</td>
 		</tr>
 		<tr>
 			<td class="sub_td" colspan="2" class="tds">
-				<input type="submit" value="注册用户" />
+				<input type="submit" value="注册用户" ng-click="submit()" />
 			</td>
 		</tr>
 	</table>
