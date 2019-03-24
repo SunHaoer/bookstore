@@ -32,7 +32,7 @@ public class RegisterServiceImpl implements RegisterService {
             OperateJson.putParameterNull(outputJson);
         } else {
             if(!password.equals(password2) || !phone.equals(phoneCodeInfo.substring(0, 11)) || !phoneCode.equals(phoneCodeInfo.substring(12, 16))) {
-                OperateJson.putParamterError(outputJson);
+                OperateJson.putParameterError(outputJson);
             } else {
                 try {
                     OperateJson.putSuccess(outputJson, true);

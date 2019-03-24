@@ -13,8 +13,8 @@ public class HomePageController {
     @Autowired
     public HomePageService homePageService;
 
-    @RequestMapping(value="/getProductListViewModel")
-    public String getProductListViewModel() {
+    @RequestMapping(value="/getHomePageViewModel")
+    public String getHomePageViewModel() {
         JSONObject outputJson = homePageService.getHomePageViewModel();
         //ProductListViewModel model = homePageService.getProductListViewModel();
 

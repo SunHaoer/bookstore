@@ -26,7 +26,6 @@ public class TestController {
     @Autowired
     TestService testService;
 
-
     @RequestMapping("/test")
     @ResponseBody
     public String test(HttpSession session) {

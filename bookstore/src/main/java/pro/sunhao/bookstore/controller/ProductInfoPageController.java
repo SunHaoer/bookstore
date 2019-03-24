@@ -12,9 +12,9 @@ public class ProductInfoPageController {
     @Autowired
     private ProductInfoPageService productInfoPageService;
 
-    @RequestMapping(value="/getProductInfoById")
-    public String getProductInfoById(@RequestParam(defaultValue="-1") long productId) {
-        JSONObject outputJson = productInfoPageService.getProductInfoById(productId);
+    @RequestMapping(value="/getProductInfoViewModelById")
+    public String getProductInfoViewModelById(@RequestParam(defaultValue="-1") long productId) {
+        JSONObject outputJson = productInfoPageService.getProductInfoViewModelById(productId);
         return outputJson.toString();
     }
 

@@ -3,14 +3,11 @@ package pro.sunhao.bookstore.pojo;
 public class ProductBase {
     private Long productId;
     private String productName;
+    private String productKind;
     private Double productPrice;
     private String productDesc;
     private Integer productCount;
     private String productImagePath;
-
-    public void setProductImagePath(String productImagePath) {
-        this.productImagePath = productImagePath;
-    }
 
     public Long getProductId() {
         return productId;
@@ -26,6 +23,14 @@ public class ProductBase {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public String getProductKind() {
+        return productKind;
+    }
+
+    public void setProductKind(String productKind) {
+        this.productKind = productKind;
     }
 
     public Double getProductPrice() {
@@ -54,5 +59,9 @@ public class ProductBase {
 
     public String getProductImagePath() {
         return productImagePath;
+    }
+
+    public void setProductImagePath(String productImagePath) {
+        this.productImagePath = productImagePath;
     }
 }

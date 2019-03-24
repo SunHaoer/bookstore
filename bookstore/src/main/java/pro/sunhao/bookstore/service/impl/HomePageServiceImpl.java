@@ -2,8 +2,8 @@ package pro.sunhao.bookstore.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Service;
-import pro.sunhao.bookstore.info.ProductKindList;
 import pro.sunhao.bookstore.service.HomePageService;
+import pro.sunhao.bookstore.util.OperateJson;
 
 @Service
 public class HomePageServiceImpl implements HomePageService {
@@ -12,10 +12,8 @@ public class HomePageServiceImpl implements HomePageService {
     public JSONObject getHomePageViewModel() {
         JSONObject outputJson = new JSONObject();
         if(true) {
-            outputJson.put("productKindList", ProductKindList.productKindList);
-            outputJson.put("success", true);
-        } else {
-            outputJson.put("message", "");
+            OperateJson.putSuccess(outputJson, true);
+            OperateJson.putProductKindList(outputJson);
         }
         return outputJson;
     }
