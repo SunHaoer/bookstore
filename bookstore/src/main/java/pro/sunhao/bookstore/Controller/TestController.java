@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import pro.sunhao.bookstore.service.TestService;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,7 +43,9 @@ public class TestController {
             MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_PNG_VALUE })
     @ResponseBody
     public String getImg() {
-        Path path = Paths.get("C:\\Users\\Public\\Pictures\\Sample Pictures\\Koala.jpg");
+        System.out.println(ResourceUtils.CLASSPATH_URL_PREFIX + "static/productKindImg1.jpg");
+        Path path = Paths.get(ResourceUtils.CLASSPATH_URL_PREFIX + "static/productKindImg1.jpg");
+
         byte[] data = null;
         try {
             data = Files.readAllBytes(path);

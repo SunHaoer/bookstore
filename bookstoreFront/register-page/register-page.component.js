@@ -90,6 +90,7 @@ component('registerPage', {
 						if (data.success) {
 							if (data.isLegal) {
 								$scope.phoneCodeOK = true;
+								$scope.getPhoneCodeMessage = '';
 							} else {
 								$scope.getPhoneCodeMessage = 'error';
 							}
