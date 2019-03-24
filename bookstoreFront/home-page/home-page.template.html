@@ -1,31 +1,8 @@
 <link rel="stylesheet" href="css/index.css" />
 
 <!-- 引入header的内容 -->
-<div id="common_head">
-	<div id="line1">
-		<div id="content">
-			<a href="#">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-			<a href="#">注册</a>
-		</div>
-	</div>
-	<div id="line2">
-		<img id="logo" src="img/head/logo.jpg" />
-		<input type="text" name="" />
-		<input type="button" value="搜 索" />
-		<span id="goto">
-			<a id="goto_order" href="#">我的订单</a>
-			<a id="goto_cart" href="#">我的购物车</a>
-		</span>
-	</div>
-	<div id="line3">
-		<div id="content">
-			<li><a><a></li>
-			<ul ng-repeat="kindName in productKindList">
-				<li><a>{{kindName}}<a></li>
-			</ul>
-		</div>
-	</div>
-</div>
+<div ng-include="'include/header.html'"></div>
+
 <!-- body -->
 <div id="index">
 

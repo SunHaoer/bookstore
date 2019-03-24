@@ -1,5 +1,8 @@
 <link href="css/prodList.css" rel="stylesheet" type="text/css">
 
+<!-- 引入header的内容 -->
+<div ng-include="'include/header.html'"></div>
+
 <div id="content">
 	<div id="search_div">
 		<form method="post" action="#">
@@ -9,176 +12,25 @@
 			<input type="submit" value="查 询">
 		</form>
 	</div>
-	<div id="prod_content">
-		<div class="prod_div">
-			<img src="img/prodlist/prod.jpg"></img>
-			<div id="prod_name_div">
-				华为荣耀6plus
-			</div>
-			<div id="prod_price_div">
-				￥2099元
-			</div>
-			<div>
-				<div id="gotocart_div">
-					<a href="#">加入购物车</a>
+	
+	<div id="prod_content" >
+		<div class="prod_div" ng-repeat="product in productList" >
+			<a href="#!/bookstore/productInfo?productId={{product.productId}}">
+				<img src="{{product.productImagePath}}"></img>
+				<div id="prod_name_div">
+					{{product.productName}}
 				</div>
-				<div id="say_div">
-					133人评价
+				<div id="prod_price_div">
+					￥{{product.productPrice}}元
 				</div>
-			</div>
-		</div>
-		<div class="prod_div">
-			<img src="img/prodlist/prod.jpg"></img>
-			<div id="prod_name_div">
-				华为荣耀6plus
-			</div>
-			<div id="prod_price_div">
-				￥2099元
-			</div>
-			<div>
-				<div id="gotocart_div">
-					<a href="#">加入购物车</a>
-				</div>
-				<div id="say_div">
-					133人评价
-				</div>
-			</div>
-		</div>
-		<div class="prod_div">
-			<img src="img/prodlist/prod.jpg"></img>
-			<div id="prod_name_div">
-				华为荣耀6plus
-			</div>
-			<div id="prod_price_div">
-				￥2099元
-			</div>
-			<div>
-				<div id="gotocart_div">
-					<a href="#">加入购物车</a>
-				</div>
-				<div id="say_div">
-					133人评价
-				</div>
-			</div>
-		</div>
-		<div class="prod_div">
-			<img src="img/prodlist/prod.jpg"></img>
-			<div id="prod_name_div">
-				华为荣耀6plus
-			</div>
-			<div id="prod_price_div">
-				￥2099元
-			</div>
-			<div>
-				<div id="gotocart_div">
-					<a href="#">加入购物车</a>
-				</div>
-				<div id="say_div">
-					133人评价
-				</div>
-			</div>
-		</div>
-		<div class="prod_div" style="margin-right: 0px;">
-			<img src="img/prodlist/prod.jpg"></img>
-			<div id="prod_name_div">
-				华为荣耀6plus
-			</div>
-			<div id="prod_price_div">
-				￥2099元
-			</div>
-			<div>
-				<div id="gotocart_div">
-					<a href="#">加入购物车</a>
-				</div>
-				<div id="say_div">
-					133人评价
-				</div>
-			</div>
-		</div>
-		<div class="prod_div">
-			<img src="img/prodlist/prod.jpg"></img>
-			<div id="prod_name_div">
-				华为荣耀6plus
-			</div>
-			<div id="prod_price_div">
-				￥2099元
-			</div>
-			<div>
-				<div id="gotocart_div">
-					<a href="#">加入购物车</a>
-				</div>
-				<div id="say_div">
-					133人评价
-				</div>
-			</div>
-		</div>
-		<div class="prod_div">
-			<img src="img/prodlist/prod.jpg"></img>
-			<div id="prod_name_div">
-				华为荣耀6plus
-			</div>
-			<div id="prod_price_div">
-				￥2099元
-			</div>
-			<div>
-				<div id="gotocart_div">
-					<a href="#">加入购物车</a>
-				</div>
-				<div id="say_div">
-					133人评价
-				</div>
-			</div>
-		</div>
-		<div class="prod_div">
-			<img src="img/prodlist/prod.jpg"></img>
-			<div id="prod_name_div">
-				华为荣耀6plus
-			</div>
-			<div id="prod_price_div">
-				￥2099元
-			</div>
-			<div>
-				<div id="gotocart_div">
-					<a href="#">加入购物车</a>
-				</div>
-				<div id="say_div">
-					133人评价
-				</div>
-			</div>
-		</div>
-		<div class="prod_div">
-			<img src="img/prodlist/prod.jpg"></img>
-			<div id="prod_name_div">
-				华为荣耀6plus
-			</div>
-			<div id="prod_price_div">
-				￥2099元
-			</div>
-			<div>
-				<div id="gotocart_div">
-					<a href="#">加入购物车</a>
-				</div>
-				<div id="say_div">
-					133人评价
-				</div>
-			</div>
-		</div>
-		<div class="prod_div" style="margin-right: 0px;">
-			<img src="img/prodlist/prod.jpg"></img>
-			<div id="prod_name_div">
-				华为荣耀6plus
-			</div>
-			<div id="prod_price_div">
-				￥2099元
-			</div>
-			<div>
-				<div id="gotocart_div">
-					<a href="#">加入购物车</a>
-				</div>
-				<div id="say_div">
-					133人评价
-				</div>
-			</div>
+				<div>
+					<div id="gotocart_div">
+						查看详情
+					</div>
+
+				</div>				
+			</a>
+
 		</div>
 		<div style="clear: both"></div>
 	</div>

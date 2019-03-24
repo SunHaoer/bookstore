@@ -10,7 +10,7 @@ component('homePage',{
 			$http({
 				withCredentials: true,
 				method: 'GET',
-				url: uri + '/index/getProductListViewModel',
+				url: uri + '/index/getHomePageViewModel',
 				params: ({
 				}),
 			}).then(function success(response) {

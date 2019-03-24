@@ -8,17 +8,19 @@ angular.
 					
 					$scope.getProductInfoModelMessage = '';
 					$scope.getProductInfoModel = function () {
+						var productId = $location.search()['productId'];
 						$http({
 							withCredentials: true,
 							method: 'GET',
-							url: uri + '/productInfo/getProductInfoById',
+							url: uri + '/productInfo/getProductInfoViewModelById',
 							params: ({
-								productId:1
+								productId:productId
 							}),
 						}).then(function success(response) {
 							var data = response.data;
 							if(data.success) {
 								var product = data.productInfo;
+								$scope.productKindList = data.productKindList;
 								$scope.productName = product.productName;
 								$scope.productPrice = product.productPrice;
 								$scope.productDesc = product.productDesc;
@@ -33,7 +35,5 @@ angular.
 					}
 					$scope.getProductInfoModel();
 					
-           //$location.search()['name'];  
-            
         }]
     })

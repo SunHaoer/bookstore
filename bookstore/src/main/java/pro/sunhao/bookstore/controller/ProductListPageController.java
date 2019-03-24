@@ -1,6 +1,7 @@
 package pro.sunhao.bookstore.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,7 +20,8 @@ public class ProductListPageController {
     public String getProductListPageViewModel(
             @RequestParam(defaultValue = "") String searchStr, @RequestParam(defaultValue = "") String productKind,
             @RequestParam(defaultValue = "0") double priceLow, @RequestParam(defaultValue = Integer.MAX_VALUE + "") double priceHigh,
-            @RequestParam(defaultValue = "1") int nowPage, @RequestParam(defaultValue = "10") int pageNum) {
+            @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
+        PageHelper.startPage(1, 5);
         JSONObject outputJson = productListPageService.getProductListPageViewModel(searchStr, productKind, priceLow, priceHigh);
         return outputJson.toString();
     }
