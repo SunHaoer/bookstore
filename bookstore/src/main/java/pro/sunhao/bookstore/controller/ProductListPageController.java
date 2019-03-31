@@ -19,7 +19,7 @@ public class ProductListPageController {
     @RequestMapping(value = "/getProductListPageViewModel")
     public String getProductListPageViewModel(
             @RequestParam(defaultValue = "") String searchStr, @RequestParam(defaultValue = "") String productKind,
-            @RequestParam(defaultValue = "0") double priceLow, @RequestParam(defaultValue = Integer.MAX_VALUE + "") double priceHigh,
+            @RequestParam(defaultValue = "0") double priceLow, @RequestParam(defaultValue = Double.MAX_VALUE + "") double priceHigh,
             @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
         PageHelper.startPage(1, 5);
         JSONObject outputJson = productListPageService.getProductListPageViewModel(searchStr, productKind, priceLow, priceHigh);

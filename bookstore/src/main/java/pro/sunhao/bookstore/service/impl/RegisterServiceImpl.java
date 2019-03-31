@@ -61,9 +61,10 @@ public class RegisterServiceImpl implements RegisterService {
                 Long userId = registerDao.selectUserByUserNameOrPhone(username);
                 OperateJson.putSuccess(outputJson, true);
                 if(userId == null) {
-                    outputJson.put("isLegal", true);
+                    OperateJson.putIsLegal(outputJson, true);
+                    //outputJson.put("isLegal", true);
                 } else {
-                    outputJson.put("isLegal", false);
+                    OperateJson.putIsLegal(outputJson, false);
                 }
             } catch (Exception e) {
                 OperateJson.putDataBaseError(outputJson);
@@ -84,14 +85,14 @@ public class RegisterServiceImpl implements RegisterService {
             Matcher matcher = phonePattern.matcher(phone);
             try {
                 if(!matcher.matches() || registerDao.selectUserByUserNameOrPhone(phone) != null) {     // 手机号格式不合法或重复
-                    outputJson.put("message", "phone is not legal");
+                    OperateJson.putMessage(outputJson, "phone is not legal");
                 } else {
                     try {
-                        outputJson.put("success", true);
+                        OperateJson.putSuccess(outputJson, true);
                         sendPhoneCode(phone, outputJson);
-                        outputJson.put("isLegal", true);
+                        OperateJson.putIsLegal(outputJson, true);
                     } catch (Exception e) {
-                        outputJson.put("message", "send message error");
+                        OperateJson.putMessage(outputJson, "send message error");
                         e.printStackTrace();
                     }
                 }
@@ -118,7 +119,7 @@ public class RegisterServiceImpl implements RegisterService {
         HttpResponse response = HttpUtils.doGet(host, path, method, headers, querys);
         outputJson.put("phoneCode", phoneCode);
         System.out.println(response.toString());
-        //获取response的body
+        // 获取response的body
         System.out.println(EntityUtils.toString(response.getEntity()));
     }
 }

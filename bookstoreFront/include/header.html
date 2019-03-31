@@ -1,24 +1,25 @@
+
 <div id="common_head">
 	<div id="line1">
 		<div id="content">
-			<a href="#">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-			<a href="#">注册</a>
+			<a href="#!/bookstore/loginPage">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="#!/bookstore/registerPage">注册</a>
 		</div>
 	</div>
 	<div id="line2">
-		<img id="logo" src="img/head/logo.jpg" />
+		<a href="#!/bookstore"><img id="logo" src="img/head/logo.jpg" /></a>
 		<input type="text" name="" />
 		<input type="button" value="搜 索" />
 		<span id="goto">
 			<a id="goto_order" href="#">我的订单</a>
-			<a id="goto_cart" href="#">我的购物车</a>
+			<a id="goto_cart" href="#!/bookstore/cartPage">我的购物车</a>
 		</span>
 	</div>
 	<div id="line3">
 		<div id="content">
 			<li><a><a></li>
 			<ul ng-repeat="kindName in productKindList">
-				<li><a>{{kindName}}<a></li>
+				<li><a href="#!/bookstore/productList?productKind={{kindName}}">{{kindName}}<a></li>
 			</ul>
 		</div>
 	</div>

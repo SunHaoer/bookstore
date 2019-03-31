@@ -7,6 +7,7 @@ public class ProductKindList {
     static public List<String> productKindList = new ArrayList<String>();
 
     static {
+        productKindList.add("全部");
         productKindList.add("语文");
         productKindList.add("数学");
         productKindList.add("英语");

@@ -10,6 +10,17 @@ public class UserBase {
     private String userAddress2;
     private String userAddress3;
 
+    public UserBase(Long userId, String userUsername, String userPassword, String userPhone, int userGender, String userAddress1, String userAddress2, String userAddress3) {
+        this.userId = userId;
+        this.userUsername = userUsername;
+        this.userPassword = userPassword;
+        this.userPhone = userPhone;
+        this.userGender = userGender;
+        this.userAddress1 = userAddress1;
+        this.userAddress2 = userAddress2;
+        this.userAddress3 = userAddress3;
+    }
+
     public UserBase(String username, String password, int gender, String phone) {
         this.userUsername = username;
         this.userPassword = password;

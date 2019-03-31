@@ -4,6 +4,9 @@
 
     <select id="selectProductByParameter" resultType="pro.sunhao.bookstore.pojo.ProductBase">
 		select * from product_base
+		where (product_name like #{searchStr} or product_desc like #{searchStr})
+		and product_kind like #{productKind}
+		and #{priceHigh}>=product_price and product_price>=#{priceLow}
 	</select>
 
 </mapper>

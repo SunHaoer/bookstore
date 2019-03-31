@@ -23,7 +23,7 @@ public class ProductListPageServiceImpl implements ProductListPageService {
         try {
             OperateJson.putSuccess(outputJson, true);
             OperateJson.putProductKindList(outputJson);
-            List<ProductBase> productBaseList = productListDao.selectProductByParameter(searchStr, productKind, priceLow, priceHigh);
+            List<ProductBase> productBaseList = productListDao.selectProductByParameter('%' + searchStr + '%', '%' + productKind + '%', priceLow, priceHigh);
             outputJson.put("productList", productBaseList);
         } catch (Exception e) {
             OperateJson.putDataBaseError(outputJson);

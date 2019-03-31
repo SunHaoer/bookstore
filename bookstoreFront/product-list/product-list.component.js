@@ -8,12 +8,16 @@ angular.
 					 
 					 $scope.getProductListModelMessage = '';
 					 $scope.getProductListModel = function () {
+						var productKind = $location.search()['productKind'];
 					 	$http({
 					 		withCredentials: true,
 					 		method: 'GET',
 					 		url: uri + '/productList/getProductListPageViewModel',
 					 		params: ({
-					 			
+					 			searchStr: $scope.searchStr,
+								productKind: $scope.productKind,
+								priceLow: $scope.priceLow,
+								priceHigh: $scope.priceHigh
 					 		}),
 					 	}).then(function success(response) {
 					 		var data = response.data;

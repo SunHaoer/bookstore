@@ -5,12 +5,12 @@
 
 <div id="content">
 	<div id="search_div">
-		<form method="post" action="#">
-			<span class="input_span">商品名：<input type="text" name="name" /></span>
-			<span class="input_span">商品种类：<input type="text" name="category" /></span>
-			<span class="input_span">商品价格区间：<input type="text" name="minprice" /> - <input type="text" name="maxprice" /></span>
-			<input type="submit" value="查 询">
-		</form>
+		<div>
+			<span class="input_span">商品名：<input type="text" name="name" ng-model="searchStr" value="{{searchStr}}" /></span>
+			<span class="input_span">商品种类：<input type="text" name="category" ng-model="productKind" value="{{productKind}}" /></span>
+			<span class="input_span">商品价格区间：<input type="text" name="minprice" ng-model="priceLow" value="priceLow" /> - <input type="text" name="maxprice" ng-model="priceHigh" value="priceHigh" /></span>
+			<input type="submit" value="查 询" ng-click="getProductListModel()">
+		</div>
 	</div>
 	
 	<div id="prod_content" >
@@ -27,10 +27,8 @@
 					<div id="gotocart_div">
 						查看详情
 					</div>
-
 				</div>				
 			</a>
-
 		</div>
 		<div style="clear: both"></div>
 	</div>
