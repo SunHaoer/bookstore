@@ -1,4 +1,4 @@
-package pro.sunhao.bookstore.info;
+package pro.sunhao.bookstore.util;
 
 import java.util.Random;
 

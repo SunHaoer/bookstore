@@ -6,7 +6,7 @@ import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pro.sunhao.bookstore.dao.RegisterDao;
-import pro.sunhao.bookstore.info.PhoneCodeConfig;
+import pro.sunhao.bookstore.util.PhoneCodeConfig;
 import pro.sunhao.bookstore.pojo.UserBase;
 import pro.sunhao.bookstore.service.RegisterService;
 import pro.sunhao.bookstore.util.HttpUtils;
@@ -25,6 +25,7 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public JSONObject saveUserResultModel(String username, String password, int gender, String password2, String phone, String phoneCode, String phoneCodeInfo) {
+        //registerDao.createCartTableByUserId(0);
         JSONObject outputJson = new JSONObject();
         OperateJson.putSuccess(outputJson, false);
         //System.out.println(username + " " + password + " " + password2 + " " + phone + " " + phoneCode + " " + phoneCodeInfo + "\n");
@@ -34,18 +35,18 @@ public class RegisterServiceImpl implements RegisterService {
             if(!password.equals(password2) || !phone.equals(phoneCodeInfo.substring(0, 11)) || !phoneCode.equals(phoneCodeInfo.substring(12, 16))) {
                 OperateJson.putParameterError(outputJson);
             } else {
-                try {
+                try {       // 此处需要事务回滚绑定
                     OperateJson.putSuccess(outputJson, true);
                     UserBase user = new UserBase(username, password, gender, phone);
                     registerDao.insertUser(user);
                     long id = user.getUserId();
-                    System.out.println(id);
+                    registerDao.createCartTableByUserId(id);
+                    //System.out.println(id);
                 } catch (Exception e) {
                     OperateJson.putDataBaseError(outputJson);
                     e.printStackTrace();
                 }
             }
-
         }
         return outputJson;
     }

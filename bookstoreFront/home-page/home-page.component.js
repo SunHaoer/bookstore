@@ -2,10 +2,11 @@ angular.
 module('homePage').
 component('homePage',{
     templateUrl:'home-page/home-page.template.html',
-    controller: ['$scope', '$http', '$location', function ProductListCtrl($scope, $http, $location) {
+    controller: ['$scope', '$http', '$location', function ($scope, $http, $location) {
 		var uri1 = 'http://localhost:8080';
 		var uri = uri1;
 		
+		$scope.isLogin = false;
 		$scope.getProductListModel = function () {
 			$http({
 				withCredentials: true,
@@ -17,7 +18,10 @@ component('homePage',{
 				var data = response.data;
 				if(data.success) {
 					$scope.productKindList = data.productKindList;
-					console.log($scope.productKindList);
+					$scope.loginUsername = data.loginUsername;
+					$scope.isLogin = true;
+					//alert($scope.loginUsername);
+					//console.log($scope.productKindList);
 				} else {
 					$scope.message = 'error';
 				}

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sunhao.bookstore.service.LoginService;
 
+import javax.security.auth.Subject;
 import javax.servlet.http.HttpSession;
 
 @RestController
@@ -23,7 +24,7 @@ public class LoginController {
         JSONObject outputJson = loginService.getLoginResultModel(userUsername, userPassword);
         if(outputJson.get("user") != null) {
             //System.out.println("login success");
-            session.setAttribute("isLogin", outputJson.get("user"));
+            session.setAttribute("loginUser", outputJson.get("user"));
             outputJson.remove("user");
         }
         return outputJson.toString();

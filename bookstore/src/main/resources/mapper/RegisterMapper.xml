@@ -17,4 +17,8 @@
 		limit 1
 	</select>
 
+	<update id="createCartTableByUserId">
+		CREATE TABLE user#{id}_cart (id INT PRIMARY KEY AUTO_INCREMENT, pid BIGINT, pnum INT);
+	</update>
+
 </mapper>

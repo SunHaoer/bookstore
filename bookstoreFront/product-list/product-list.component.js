@@ -25,7 +25,7 @@ angular.
 					 			var product = data.productList;
 					 			$scope.productKindList = data.productKindList;
 					 			$scope.productList = data.productList;
-								console.log($scope.productList);
+								//console.log($scope.productList);
 					 		} else {
 					 			$scope.getProductListModelMessage = 'not success';
 					 		}

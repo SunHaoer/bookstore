@@ -8,4 +8,5 @@ public interface LoginDao {
 
     UserBase selectUserByUsernameAndPassword(String username, String password);
 
+    UserBase selectUserByUsername(String username);
 }

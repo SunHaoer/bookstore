@@ -26,9 +26,10 @@ public class LoginServiceImpl implements LoginService {
                 OperateJson.putSuccess(outputJson, true);
                 if(user == null) {
                     OperateJson.putIsLegal(outputJson, false);
+                    OperateJson.putMessage(outputJson, "username or password wrong");
                 } else {
                     OperateJson.putIsLegal(outputJson, true);
-                    outputJson.put("user", user);
+                    outputJson.put("user", user.toSessionString());
                 }
             } catch (Exception e) {
                 OperateJson.putDataBaseError(outputJson);

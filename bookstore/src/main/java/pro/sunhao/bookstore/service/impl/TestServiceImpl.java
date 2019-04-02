@@ -12,6 +12,7 @@ public class TestServiceImpl implements TestService {
     private TestDao test;
 
     public boolean test(String username, String password) {
+
         if(test.login(username, password) != null) {
             System.out.println("1");
         } else {

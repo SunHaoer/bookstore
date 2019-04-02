@@ -47,3 +47,5 @@ input[type='submit']{
 input[type='submit']:hover{
 	background-image: url("../img/login/dlan02.jpg");
 }
+
+span { color: #FF0000; }

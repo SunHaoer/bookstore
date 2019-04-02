@@ -8,5 +8,5 @@ public interface HomePageService {
      * 获取商品种类名称列表
      * @return
      */
-    JSONObject getHomePageViewModel();
+    JSONObject getHomePageViewModel(String loginUser);
 }

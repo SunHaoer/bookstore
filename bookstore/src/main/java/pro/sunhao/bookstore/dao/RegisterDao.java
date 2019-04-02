@@ -10,4 +10,6 @@ public interface RegisterDao {
 
     Long selectUserByUserNameOrPhone(String inputStr);
 
+    void createCartTableByUserId(long id);
+
 }

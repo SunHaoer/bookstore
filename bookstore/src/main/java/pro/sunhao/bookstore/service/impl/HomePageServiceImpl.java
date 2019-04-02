@@ -9,11 +9,15 @@ import pro.sunhao.bookstore.util.OperateJson;
 public class HomePageServiceImpl implements HomePageService {
 
     @Override
-    public JSONObject getHomePageViewModel() {
+    public JSONObject getHomePageViewModel(String loginUser) {
+        System.out.println(loginUser);
         JSONObject outputJson = new JSONObject();
         if(true) {
             OperateJson.putSuccess(outputJson, true);
             OperateJson.putProductKindList(outputJson);
+            if(loginUser != null) {
+                outputJson.put("loginUsername", loginUser.split(",")[1]);
+            }
         }
         return outputJson;
     }

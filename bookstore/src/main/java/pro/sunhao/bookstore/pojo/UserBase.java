@@ -91,4 +91,10 @@ public class UserBase {
     public void setUserAddress3(String userAddress3) {
         this.userAddress3 = userAddress3;
     }
+
+    public String toSessionString() {
+        final StringBuilder sb = new StringBuilder("");
+        sb.append(userId).append(",").append(userUsername);
+        return sb.toString();
+    }
 }

@@ -1,9 +1,13 @@
 
 <div id="common_head">
 	<div id="line1">
-		<div id="content">
+		<div ng-if="!isLogin">
 			<a href="#!/bookstore/loginPage">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 			<a href="#!/bookstore/registerPage">注册</a>
+		</div>
+		<div ng-if="isLogin">
+			欢迎回来，{{loginUsername}}&nbsp;&nbsp;|&nbsp;
+			<a>登出</a>
 		</div>
 	</div>
 	<div id="line2">
