@@ -18,7 +18,7 @@
 	</select>
 
 	<update id="createCartTableByUserId">
-		CREATE TABLE user#{id}_cart (id INT PRIMARY KEY AUTO_INCREMENT, pid BIGINT, pnum INT);
+		CREATE TABLE user#{id}_cart (id INT PRIMARY KEY AUTO_INCREMENT, product_id BIGINT, product_num INT);
 	</update>
 
 </mapper>

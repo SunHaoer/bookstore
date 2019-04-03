@@ -10,7 +10,7 @@ public class HomePageServiceImpl implements HomePageService {
 
     @Override
     public JSONObject getHomePageViewModel(String loginUser) {
-        System.out.println(loginUser);
+        //System.out.println(loginUser);
         JSONObject outputJson = new JSONObject();
         if(true) {
             OperateJson.putSuccess(outputJson, true);

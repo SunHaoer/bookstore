@@ -7,4 +7,5 @@ public interface LoginService {
 
     JSONObject getLoginResultModel(String username, String password);
 
+    JSONObject getLogoutResultModel();
 }

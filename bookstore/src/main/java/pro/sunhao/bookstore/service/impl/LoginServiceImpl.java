@@ -1,6 +1,7 @@
 package pro.sunhao.bookstore.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pro.sunhao.bookstore.dao.LoginDao;
@@ -36,6 +37,13 @@ public class LoginServiceImpl implements LoginService {
                 e.printStackTrace();
             }
         }
+        return outputJson;
+    }
+
+    @Override
+    public JSONObject getLogoutResultModel() {
+        JSONObject outputJson = new JSONObject();
+        OperateJson.putSuccess(outputJson, true);
         return outputJson;
     }
 

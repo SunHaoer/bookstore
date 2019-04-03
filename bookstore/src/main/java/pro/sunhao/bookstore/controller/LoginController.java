@@ -1,6 +1,7 @@
 package pro.sunhao.bookstore.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sunhao.bookstore.service.LoginService;
 
-import javax.security.auth.Subject;
 import javax.servlet.http.HttpSession;
 
 @RestController
@@ -27,6 +27,13 @@ public class LoginController {
             session.setAttribute("loginUser", outputJson.get("user"));
             outputJson.remove("user");
         }
+        return outputJson.toString();
+    }
+
+    @RequestMapping(value="/logout")
+    public String logout(HttpSession session) {
+        JSONObject outputJson = loginService.getLogoutResultModel();
+        session.removeAttribute("loginUser");
         return outputJson.toString();
     }
 
