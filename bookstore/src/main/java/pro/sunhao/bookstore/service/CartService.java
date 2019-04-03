@@ -7,4 +7,6 @@ public interface CartService {
     JSONObject getAddProductToCartByIdResultModel(long userId, long productId);
 
     JSONObject getRemoveProductToCartByIdResultModel(long userId, long productId);
+
+    JSONObject getCartPageViewModel(long userId);
 }
