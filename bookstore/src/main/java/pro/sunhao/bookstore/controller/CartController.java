@@ -17,7 +17,15 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-    @RequestMapping(value = "/addProdcutToCartById")
+    @RequestMapping(value = "/getCartPageViewModel")
+    public String getCartPageViewModel(HttpSession session) {
+        //session.setAttribute("loginUser", "1,2");
+        long userId = session.getAttribute("loginUser") != null ? Long.parseLong(session.getAttribute("loginUser").toString().split(",")[0]) : -1;
+        JSONObject outputJson = cartService.getCartPageViewModel(userId);
+        return outputJson.toString();
+    }
+
+    @RequestMapping(value = "/addProductToCartById")
     public String addProdcutToCartById(@RequestParam(defaultValue="-1") long productId, HttpSession session) {
         //session.setAttribute("loginUser", "1,2");
         long userId = session.getAttribute("loginUser") != null ? Long.parseLong(session.getAttribute("loginUser").toString().split(",")[0]) : -1;
@@ -32,12 +40,10 @@ public class CartController {
         return outputJson.toString();
     }
 
-    @RequestMapping(value = "/getCartPageViewModel")
-    public String getCartPageViewModel(HttpSession session) {
-        session.setAttribute("loginUser", "1,2");
+    @RequestMapping(value = "/deleteProductToCartById")
+    public String deleteProductToCartById(@RequestParam(defaultValue="-1") long productId, HttpSession session) {
         long userId = session.getAttribute("loginUser") != null ? Long.parseLong(session.getAttribute("loginUser").toString().split(",")[0]) : -1;
-        JSONObject outputJson = cartService.getCartPageViewModel(userId);
+        JSONObject outputJson = cartService.getDeleteProductToCartByIdResultModel(userId, productId);
         return outputJson.toString();
     }
-
 }

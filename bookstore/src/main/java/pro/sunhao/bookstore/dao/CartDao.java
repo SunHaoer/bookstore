@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public interface CartDao {
 
-    int selectCountByProductId(long userId, long productId);
+    Integer selectCountByProductId(long userId, long productId);
 
     void insertProductById(long userId, long productId);
 

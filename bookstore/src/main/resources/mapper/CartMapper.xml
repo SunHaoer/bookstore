@@ -3,7 +3,7 @@
 <mapper namespace="pro.sunhao.bookstore.dao.CartDao">
 
     <select id="selectCountByProductId" resultType="Integer">
-		select count(*) from user#{userId}_cart
+		select product_num from user#{userId}_cart
 		where product_id=#{productId}
 	</select>
 

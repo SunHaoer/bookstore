@@ -25,7 +25,8 @@ public class CartServiceImpl implements CartService {
         } else {
             try {
                 OperateJson.putSuccess(outputJson, true);
-                int productNum = cartDao.selectCountByProductId(userId, productId);
+                Integer productNum = cartDao.selectCountByProductId(userId, productId);
+                productNum = productNum == null ? 0 : productNum;
                 if(productNum == 0) {
                     cartDao.insertProductById(userId, productId);
                 } else {
@@ -48,8 +49,9 @@ public class CartServiceImpl implements CartService {
         } else {
             try {
                 OperateJson.putSuccess(outputJson, true);
-                int productNum = cartDao.selectCountByProductId(userId, productId);
-                //System.out.println(productNum);
+                Integer productNum = cartDao.selectCountByProductId(userId, productId);
+                productNum = productNum == null ? 0 : productNum;
+                System.out.println(productNum);
                 if(productNum <= 0) {
                     OperateJson.putParameterError(outputJson);
                 } else if(productNum == 1) {
@@ -73,6 +75,7 @@ public class CartServiceImpl implements CartService {
             OperateJson.putParameterError(outputJson);
         } else {
             try {
+                OperateJson.putSuccess(outputJson, true);
                 List<ProductCartViewModel> cartList = cartDao.getProductCartViewModel(userId);
                 //System.out.println(cartList);
                 double priceCount = 0;
@@ -89,6 +92,24 @@ public class CartServiceImpl implements CartService {
             }
         }
         return  outputJson;
+    }
+
+    @Override
+    public JSONObject getDeleteProductToCartByIdResultModel(long userId, long productId) {
+        JSONObject outputJson = new JSONObject();
+        OperateJson.putSuccess(outputJson, false);
+        if(userId < 0 || productId < 0) {
+            OperateJson.putParameterError(outputJson);
+        } else {
+            try {
+                OperateJson.putSuccess(outputJson, true);
+                cartDao.deleteProductById(userId, productId);
+            } catch (Exception e) {
+                e.printStackTrace();
+                OperateJson.putDataBaseError(outputJson);
+            }
+        }
+        return outputJson;
     }
 
 }
