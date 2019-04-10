@@ -27,6 +27,9 @@ config(['$routeProvider',
 		when('/bookstore/manageProduct', {
 			template: '<manage-product></manage-product>'
 		}).
+		when('/bookstore/addProduct', {
+			template: '<add-product></add-product>'
+		}).
 		otherwise('/bookstore');
 	}
 ]);
