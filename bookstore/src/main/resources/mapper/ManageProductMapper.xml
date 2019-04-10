@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pro.sunhao.bookstore.dao.ManageProductDao">
+
+    <select id="selectProduct" resultType="pro.sunhao.bookstore.pojo.ProductBase">
+		select * from product_base
+	</select>
+
+    <update id="updateProductById">
+		update product_base
+		set product_name=#{productName}, product_kind=#{productKind}, product_price=#{productPrice}, product_desc=#{productDesc}, product_count=#{productCount}
+		where product_id=#{productId}
+	</update>
+
+	<delete id="deleteProductById">
+        delete from product_base
+        where product_id=#{productId}
+	</delete>
+
+</mapper>
