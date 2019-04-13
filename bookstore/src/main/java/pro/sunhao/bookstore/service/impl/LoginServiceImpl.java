@@ -24,7 +24,6 @@ public class LoginServiceImpl implements LoginService {
         } else {
             try {
                 UserBase user = loginDao.selectUserByUsernameAndPassword(username, password);
-                OperateJson.putSuccess(outputJson, true);
                 if(user == null) {
                     OperateJson.putIsLegal(outputJson, false);
                     OperateJson.putMessage(outputJson, "username or password wrong");
@@ -32,6 +31,7 @@ public class LoginServiceImpl implements LoginService {
                     OperateJson.putIsLegal(outputJson, true);
                     outputJson.put("user", user.toSessionString());
                 }
+                OperateJson.putSuccess(outputJson, true);
             } catch (Exception e) {
                 OperateJson.putDataBaseError(outputJson);
                 e.printStackTrace();

@@ -24,7 +24,6 @@ public class CartServiceImpl implements CartService {
             OperateJson.putParameterError(outputJson);
         } else {
             try {
-                OperateJson.putSuccess(outputJson, true);
                 Integer productNum = cartDao.selectCountByProductId(userId, productId);
                 productNum = productNum == null ? 0 : productNum;
                 if(productNum == 0) {
@@ -32,6 +31,7 @@ public class CartServiceImpl implements CartService {
                 } else {
                     cartDao.addProductById(userId, productId);
                 }
+                OperateJson.putSuccess(outputJson, true);
             } catch (Exception e) {
                 e.printStackTrace();
                 OperateJson.putDataBaseError(outputJson);
@@ -48,7 +48,6 @@ public class CartServiceImpl implements CartService {
             OperateJson.putParameterError(outputJson);
         } else {
             try {
-                OperateJson.putSuccess(outputJson, true);
                 Integer productNum = cartDao.selectCountByProductId(userId, productId);
                 productNum = productNum == null ? 0 : productNum;
                 System.out.println(productNum);
@@ -59,6 +58,7 @@ public class CartServiceImpl implements CartService {
                 } else {
                     cartDao.subProductById(userId, productId);
                 }
+                OperateJson.putSuccess(outputJson, true);
             } catch (Exception e) {
                 e.printStackTrace();
                 OperateJson.putDataBaseError(outputJson);
@@ -75,17 +75,17 @@ public class CartServiceImpl implements CartService {
             OperateJson.putParameterError(outputJson);
         } else {
             try {
-                OperateJson.putSuccess(outputJson, true);
                 List<ProductCartViewModel> cartList = cartDao.getProductCartViewModel(userId);
                 //System.out.println(cartList);
                 double priceCount = 0;
                 for (ProductCartViewModel product : cartList) {
-                    //System.out.println(product);
+                    System.out.println(product);
                     product.setPriceCount(product.getProductPrice() * product.getProductNum());
                     priceCount += product.getPriceCount();
                 }
                 outputJson.put("cartList", cartList);
                 outputJson.put("priceCount", priceCount);
+                OperateJson.putSuccess(outputJson, true);
             } catch (Exception e) {
                 OperateJson.putDataBaseError(outputJson);
                 e.printStackTrace();
@@ -102,8 +102,8 @@ public class CartServiceImpl implements CartService {
             OperateJson.putParameterError(outputJson);
         } else {
             try {
-                OperateJson.putSuccess(outputJson, true);
                 cartDao.deleteProductById(userId, productId);
+                OperateJson.putSuccess(outputJson, true);
             } catch (Exception e) {
                 e.printStackTrace();
                 OperateJson.putDataBaseError(outputJson);

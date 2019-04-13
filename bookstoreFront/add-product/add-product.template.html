@@ -3,36 +3,36 @@
 <h1>添加商品</h1>
 <a href="#!/bookstore/manageProduct">管理商品</a>
 <hr>
-<form>
+<form id="addProductForm">
 	<table align="center" border="1" cellspacing="0px" cellpadding="5px">
 		<tr>
 			<td>商品名称</td>
-			<td><input type="text" name="name" /></td>
+			<td><input type="text" name="productName" ng-model="product.name" /></td>
 		</tr>
 		<tr>
 			<td>商品单价</td>
-			<td><input type="text" name="price" /></td>
+			<td><input type="text" name="productPrice" ng-model="product.price" /></td>
 		</tr>
 		<tr>
 			<td>商品种类</td>
-			<td><input type="text" name="cname" /></td>
+			<td><input type="text" name="productKind" ng-model="product.kind" /></td>
 		</tr>
 		<tr>
 			<td>库存数量</td>
-			<td><input type="text" name="pnum" /></td>
+			<td><input type="text" name="productCount" ng-model="product.count" /></td>
 		</tr>
 		<tr>
 			<td>商品图片</td>
-			<td><input type="file" name="fx" /></td>
+			<td><input type="file" name="productImage"  id="uploadFile" /></td>
 		</tr>
 		<tr>
 			<td>描述信息</td>
 			<td>
-				<textarea rows="5" cols="30" name="description"></textarea>
+				<textarea rows="5" cols="30" name="productDesc" ng-model="product.desc" ></textarea>
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="submit" value="添加商品" /></td>
+			<td colspan="2"><input type="button" value="添加商品" ng-click="submit()"/></td>
 		</tr>
 	</table>
 </form>

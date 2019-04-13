@@ -36,12 +36,11 @@ public class RegisterServiceImpl implements RegisterService {
                 OperateJson.putParameterError(outputJson);
             } else {
                 try {       // 此处需要事务回滚绑定
-                    OperateJson.putSuccess(outputJson, true);
                     UserBase user = new UserBase(username, password, gender, phone);
                     registerDao.insertUser(user);
                     long id = user.getUserId();
                     registerDao.createCartTableByUserId(id);
-                    //System.out.println(id);
+                    OperateJson.putSuccess(outputJson, true);
                 } catch (Exception e) {
                     OperateJson.putDataBaseError(outputJson);
                     e.printStackTrace();
@@ -60,13 +59,13 @@ public class RegisterServiceImpl implements RegisterService {
         } else {
             try {
                 Long userId = registerDao.selectUserByUserNameOrPhone(username);
-                OperateJson.putSuccess(outputJson, true);
                 if(userId == null) {
                     OperateJson.putIsLegal(outputJson, true);
                     //outputJson.put("isLegal", true);
                 } else {
                     OperateJson.putIsLegal(outputJson, false);
                 }
+                OperateJson.putSuccess(outputJson, true);
             } catch (Exception e) {
                 OperateJson.putDataBaseError(outputJson);
                 e.printStackTrace();
@@ -89,9 +88,9 @@ public class RegisterServiceImpl implements RegisterService {
                     OperateJson.putMessage(outputJson, "phone is not legal");
                 } else {
                     try {
-                        OperateJson.putSuccess(outputJson, true);
                         sendPhoneCode(phone, outputJson);
                         OperateJson.putIsLegal(outputJson, true);
+                        OperateJson.putSuccess(outputJson, true);
                     } catch (Exception e) {
                         OperateJson.putMessage(outputJson, "send message error");
                         e.printStackTrace();

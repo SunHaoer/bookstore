@@ -24,13 +24,13 @@ public class ProductInfoPageServiceImpl implements ProductInfoPageService {
         if(productId == -1) {
             OperateJson.putParameterNull(outputJson);
         } else {
-            OperateJson.putSuccess(outputJson, true);
             OperateJson.putProductKindList(outputJson);
             try {
                 ProductBase product = productInfoDao.selectProductInfoById(productId);
                 //byte productImage[] = ImageUtil.getImageByPath(productBase.getProductImagePath());
                 //ProductInfoViewModel product = new ProductInfoViewModel(productBase.getProductId(), productBase.getProductName(), productBase.getProductPrice(), productBase.getProductDesc(), productBase.getProductCount(), productImage);
                 outputJson.put("productInfo", product);
+                OperateJson.putSuccess(outputJson, true);
             } catch (Exception e) {
                 OperateJson.putDataBaseError(outputJson);
                 e.printStackTrace();

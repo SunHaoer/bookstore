@@ -13,11 +13,11 @@ public class HomePageServiceImpl implements HomePageService {
         //System.out.println(loginUser);
         JSONObject outputJson = new JSONObject();
         if(true) {
-            OperateJson.putSuccess(outputJson, true);
             OperateJson.putProductKindList(outputJson);
             if(loginUser != null) {
                 outputJson.put("loginUsername", loginUser.split(",")[1]);
             }
+            OperateJson.putSuccess(outputJson, true);
         }
         return outputJson;
     }

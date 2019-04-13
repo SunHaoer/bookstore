@@ -21,9 +21,9 @@ public class ManageProductServiceImpl implements ManageProductService {
         JSONObject outputJson = new JSONObject();
         OperateJson.putSuccess(outputJson, false);
         try {
-            OperateJson.putSuccess(outputJson, true);
             List<ProductBase> productList = manageProductDao.selectProduct();
             outputJson.put("productList", productList);
+            OperateJson.putSuccess(outputJson, true);
         } catch (Exception e) {
             OperateJson.putDataBaseError(outputJson);
         }
@@ -38,8 +38,8 @@ public class ManageProductServiceImpl implements ManageProductService {
             OperateJson.putParameterError(outputJson);
         } else {
             try {
-                OperateJson.putSuccess(outputJson, true);
                 manageProductDao.updateProductById(productId, productName, productKind, productPrice, productDesc, productCount);
+                OperateJson.putSuccess(outputJson, true);
             } catch (Exception e) {
                 OperateJson.putDataBaseError(outputJson);
             }
@@ -55,8 +55,8 @@ public class ManageProductServiceImpl implements ManageProductService {
             OperateJson.putParameterError(outputJson);
         } else {
             try {
-                OperateJson.putSuccess(outputJson, true);
                 manageProductDao.deleteProductById(productId);
+                OperateJson.putSuccess(outputJson, true);
             } catch (Exception e) {
                 OperateJson.putDataBaseError(outputJson);
             }
