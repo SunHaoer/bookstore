@@ -3,7 +3,7 @@ package pro.sunhao.bookstore.util;
 import java.util.Random;
 
 public class PhoneCodeConfig {
-    public static String host = "https://aliyun.chanyoo.net";
+    public static String host = "https://chanyoo.market.alicloudapi.com";
     public static String path = "/sendsms";
     public static String method = "GET";
     public static String appcode = "fba4071a97e249b7869aaa569815dc88";
