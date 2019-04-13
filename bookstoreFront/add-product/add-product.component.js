@@ -20,36 +20,15 @@ component('addProduct', {
                         'Content-Type': undefined
                     }
                 }).then(function(response) {
-                    // 请求成功执行代码
-                    alert("成功")
+                    var data = response.data;
+                    if(data.success) {
+						alert('success');
+						document.getElementById("addProductForm").reset();
+					}
                 }, function(response) {
                     // 请求失败执行代码
                     alert("失败")
                 });
-
-					
-					
-// 					$http({
-// 							headers: {'Content-Type': undefined},
-// 							withCredentials: true,
-// 							method: 'POST',
-// 							url: uri + '/222',
-// 							data: {
-// 								productName: product.name,
-// 								productPrice: product.price,
-// 								productKind: product.kind,
-// 								productCount: product.count,
-// 								productImage: file,
-// 								productDesc: product.desc
-// 							},
-// 							//file: file
-// 						}).then(function success(response) {
-// 							alert('success');
-// 						}),
-// 						function error(response) {
-// 							alert('error');
-// 						}
-				
 			
 		}
 	}]

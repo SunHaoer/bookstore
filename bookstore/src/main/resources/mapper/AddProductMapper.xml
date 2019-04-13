@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pro.sunhao.bookstore.dao.AddProductDao">
+
+    <insert id="insertProduct">
+		insert into product_base
+		(product_name, product_kind, product_price, product_desc, product_count, product_image_path)
+		values
+		(#{productName}, #{productKind}, #{productPrice}, #{productDesc}, #{productCount}, #{productImagePath})
+	</insert>
+
+</mapper>

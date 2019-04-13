@@ -1,32 +1,42 @@
 package pro.sunhao.bookstore.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
+import pro.sunhao.bookstore.dao.AddProductDao;
 import pro.sunhao.bookstore.service.AddProductService;
 import pro.sunhao.bookstore.util.OperateJson;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.UUID;
 
 @Service
 public class AddProductServiceImpl implements AddProductService {
 
+    @Autowired
+    AddProductDao addProductDao;
+
     @Override
-    public JSONObject getAddProductResultModel(String productName, double productPrice, String productKind, int productCount, MultipartFile productImage, String productDesc) {
+    public JSONObject getAddProductResultModel(String productName, double productPrice, String productKind, int productCount, MultipartFile productImage, String productDesc, String uri) {
         JSONObject outputJson = new JSONObject();
         OperateJson.putSuccess(outputJson, false);
-        if(productPrice < 0 || productCount < 0 || productName.isEmpty() || productKind.isEmpty() || productDesc.isEmpty()) {
+        if (productPrice < 0 || productCount < 0 || productName.isEmpty() || productKind.isEmpty() || productDesc.isEmpty()) {
             OperateJson.putParameterError(outputJson);
         } else {
-            String imagePath = saveImage(productImage, productName, outputJson);
-            if("ok".equals(outputJson.get("message"))) {
-                outputJson.remove("message");
-                System.out.println(imagePath);
-                OperateJson.putSuccess(outputJson, true);
+            String productImagePath = saveImage(productImage, productName, outputJson);
+            if ("ok".equals(outputJson.get("message"))) {
+                try {
+                    outputJson.remove("message");
+                    productImagePath = uri + "/" + productImagePath.substring(productImagePath.indexOf("image"));
+                    addProductDao.insertProduct(productName, productKind, productPrice, productDesc, productCount, productImagePath);
+                    OperateJson.putSuccess(outputJson, true);
+                } catch (Exception e) {
+                    OperateJson.putDataBaseError(outputJson);
+                    e.printStackTrace();
+                }
             }
         }
         return outputJson;
@@ -57,8 +67,5 @@ public class AddProductServiceImpl implements AddProductService {
         }
         return path;
     }
-
-
-
 
 }
