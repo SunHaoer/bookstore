@@ -30,6 +30,9 @@ config(['$routeProvider',
 		when('/bookstore/addProduct', {
 			template: '<add-product></add-product>'
 		}).
+		when('/bookstore/payPage', {
+			template: '<pay-page></pay-page>'
+		}).
 		otherwise('/bookstore');
 	}
 ]);

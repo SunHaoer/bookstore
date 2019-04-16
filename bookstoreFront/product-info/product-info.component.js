@@ -3,8 +3,6 @@ module('productInfo').
 component('productInfo', {
 	templateUrl: 'product-info/product-info.template.html',
 	controller: ['$scope', '$http', '$location', function RegisterPageCtrl($scope, $http, $location) {
-		var uri1 = 'http://localhost:8080';
-		var uri = uri1;
 		var productId = $location.search()['productId'];
 
 		$scope.getProductInfoModelMessage = '';

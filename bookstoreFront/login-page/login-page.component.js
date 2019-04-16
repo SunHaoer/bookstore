@@ -3,8 +3,6 @@ module('loginPage').
 component('loginPage', {
 	templateUrl: 'login-page/login-page.template.html',
 	controller: ['$scope', '$http', '$location', function($scope, $http, $location) {
-		var uri1 = 'http://localhost:8080';
-		var uri = uri1;
 		
 		function initAugularObject() {
 			$scope.user = {

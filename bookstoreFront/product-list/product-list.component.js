@@ -3,8 +3,6 @@ angular.
     component('productList', {
         templateUrl: 'product-list/product-list.template.html',
         controller: ['$scope', '$http', '$location', function RegisterPageCtrl($scope, $http, $location) {
-           var uri1 = 'http://localhost:8080';
-           var uri = uri1;
 					 
 					 $scope.getProductListModelMessage = '';
 					 $scope.getProductListModel = function () {

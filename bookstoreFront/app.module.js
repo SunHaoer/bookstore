@@ -1,1 +1,2 @@
-angular.module('bookstore', ['homePage', 'ngRoute', 'registerPage', 'loginPage', 'productList', 'productInfo', 'cartPage', 'manageProduct', 'addProduct']);
+angular.module('bookstore', 
+	['homePage', 'ngRoute', 'registerPage', 'loginPage', 'productList', 'productInfo', 'cartPage', 'manageProduct', 'addProduct', 'payPage']);

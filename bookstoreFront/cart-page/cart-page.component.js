@@ -3,8 +3,6 @@ module('cartPage').
 component('cartPage', {
 	templateUrl: 'cart-page/cart-page.template.html',
 	controller: ['$scope', '$http', '$location', function($scope, $http, $location) {
-		var uri1 = 'http://localhost:8080';
-		var uri = uri1;
 
 		$scope.getCartModelMessage = '';
 		$scope.getCartModel = function() {
