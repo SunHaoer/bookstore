@@ -29,7 +29,7 @@ public class AddProductController {
                                        HttpSession session ) {
         //session.setAttribute("loginUser", "1,2");
         //System.out.println(productImage);
-        String uri = request.getScheme() +"://" + request.getServerName() + ":" +request.getServerPort();
+        String uri = request.getScheme() +"://" + request.getServerName() + ":" +request.getServerPort() + "/" + request.getContextPath();
         JSONObject outputJson = addProductService.getAddProductResultModel(productName, productPrice, productKind, productCount, productImage, productDesc, uri);
         return outputJson.toString();
     }

@@ -30,7 +30,7 @@ public class AddProductServiceImpl implements AddProductService {
             if ("ok".equals(outputJson.get("message"))) {
                 try {
                     outputJson.remove("message");
-                    productImagePath = uri + "/" + productImagePath.substring(productImagePath.indexOf("image"));
+                    productImagePath = uri + (uri.endsWith("/") ? "" : "/") + productImagePath.substring(productImagePath.indexOf("image")).replace("\\", "/");
                     addProductDao.insertProduct(productName, productKind, productPrice, productDesc, productCount, productImagePath);
                     OperateJson.putSuccess(outputJson, true);
                 } catch (Exception e) {
@@ -51,7 +51,7 @@ public class AddProductServiceImpl implements AddProductService {
                 if ("GIF".equals(type.toUpperCase()) || "PNG".equals(type.toUpperCase()) || "JPG".equals(type.toUpperCase())) {
                     name = productName + "_" + UUID.randomUUID() + "." + type;
                     try {   // 存放图片
-                        path = ResourceUtils.getURL("classpath:").getPath() + "static/image/product/" + name;
+                        path = ResourceUtils.getURL("classpath:").getPath() + "static" + File.separator + "image" + File.separator + "product" + File.separator + name;
                         productImage.transferTo(new File(path));
                         OperateJson.putMessage(outputJson, "ok");
                     } catch (IOException e) {
