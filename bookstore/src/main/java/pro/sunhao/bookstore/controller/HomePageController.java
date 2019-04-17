@@ -4,12 +4,13 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import pro.sunhao.bookstore.info.ControllerMapping;
 import pro.sunhao.bookstore.service.HomePageService;
 
 import javax.servlet.http.HttpSession;
 
 @RestController
-@RequestMapping(value="/index", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT}, produces = {"text/html;charset=utf-8"})
+@RequestMapping(value= ControllerMapping.HOMEPAGE, method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT}, produces = {"text/html;charset=utf-8"})
 public class HomePageController {
 
     @Autowired

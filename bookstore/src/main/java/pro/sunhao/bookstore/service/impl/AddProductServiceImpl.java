@@ -20,6 +20,13 @@ public class AddProductServiceImpl implements AddProductService {
     AddProductDao addProductDao;
 
     @Override
+    public JSONObject getAddProductViewModel() {
+        JSONObject outputJson = new JSONObject();
+        OperateJson.putSuccess(outputJson, true);
+        return outputJson;
+    }
+
+    @Override
     public JSONObject getAddProductResultModel(String productName, double productPrice, String productKind, int productCount, MultipartFile productImage, String productDesc, String uri) {
         JSONObject outputJson = new JSONObject();
         OperateJson.putSuccess(outputJson, false);

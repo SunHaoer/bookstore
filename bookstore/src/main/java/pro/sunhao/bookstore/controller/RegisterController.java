@@ -3,12 +3,13 @@ package pro.sunhao.bookstore.controller;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pro.sunhao.bookstore.info.ControllerMapping;
 import pro.sunhao.bookstore.service.RegisterService;
 
 import javax.servlet.http.HttpSession;
 
 @RestController
-@RequestMapping(value="/register", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT}, produces = {"text/html;charset=utf-8"})
+@RequestMapping(value = ControllerMapping.REGISTER, method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT}, produces = {"text/html;charset=utf-8"})
 public class RegisterController {
 
     @Autowired

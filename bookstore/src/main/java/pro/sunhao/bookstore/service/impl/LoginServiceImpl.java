@@ -47,4 +47,12 @@ public class LoginServiceImpl implements LoginService {
         return outputJson;
     }
 
+    @Override
+    public JSONObject getNotLimitResultModel() {
+        JSONObject outputJson = new JSONObject();
+        OperateJson.putSuccess(outputJson, false);
+        OperateJson.putMessage(outputJson, "no limit");
+        return outputJson;
+    }
+
 }

@@ -3,16 +3,14 @@ package pro.sunhao.bookstore.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import pro.sunhao.bookstore.info.ControllerMapping;
 import pro.sunhao.bookstore.service.LoginService;
 
 import javax.servlet.http.HttpSession;
 
 @RestController
-@RequestMapping(value="/login", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT}, produces = {"text/html;charset=utf-8"})
+@RequestMapping(value = ControllerMapping.LOGIN, method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT}, produces = {"text/html;charset=utf-8"})
 public class LoginController {
 
     @Autowired
@@ -34,6 +32,13 @@ public class LoginController {
     public String logout(HttpSession session) {
         JSONObject outputJson = loginService.getLogoutResultModel();
         session.removeAttribute("loginUser");
+        return outputJson.toString();
+    }
+
+    @RequestMapping(value="/notLimit")
+    public String notLimit() {
+        JSONObject outputJson = loginService.getNotLimitResultModel();
+        System.out.println("not login");
         return outputJson.toString();
     }
 

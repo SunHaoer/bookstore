@@ -6,12 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import pro.sunhao.bookstore.info.ControllerMapping;
 import pro.sunhao.bookstore.service.ManageProductService;
 
 import javax.servlet.http.HttpSession;
 
 @RestController
-@RequestMapping(value="/manageProduct", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT}, produces = {"text/html;charset=utf-8"})
+@RequestMapping(value = ControllerMapping.MANAGEPRODUCT, method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT}, produces = {"text/html;charset=utf-8"})
 public class ManageProductController {
 
     @Autowired
