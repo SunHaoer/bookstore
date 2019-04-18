@@ -76,10 +76,8 @@ public class CartServiceImpl implements CartService {
         } else {
             try {
                 List<ProductCartViewModel> cartList = cartDao.getProductCartViewModel(userId);
-                //System.out.println(cartList);
                 double priceCount = 0;
                 for (ProductCartViewModel product : cartList) {
-                    System.out.println(product);
                     product.setPriceCount(product.getProductPrice() * product.getProductNum());
                     priceCount += product.getPriceCount();
                 }

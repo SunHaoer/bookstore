@@ -8,7 +8,7 @@
 	</select>
 
     <insert id="insertProductById">
-        insert into user1_cart
+        insert into user#{userId}_cart
         (product_id, product_num)
         VALUES
         (#{productId}, 1);
@@ -33,7 +33,7 @@
 
     <select id="getProductCartViewModel" resultType="pro.sunhao.bookstore.viewmodel.ProductCartViewModel">
         select product_base.product_id, product_base.product_name, product_base.product_price, product_base.product_image_path, user1_cart.product_num
-        from user1_cart left join product_base
+        from user#{userId}_cart left join product_base
         on user1_cart.product_id=product_base.product_id
     </select>
 

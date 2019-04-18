@@ -27,7 +27,7 @@ public class CartController {
     }
 
     @RequestMapping(value = "/addProductToCartById")
-    public String addProdcutToCartById(@RequestParam(defaultValue="-1") long productId, HttpSession session) {
+    public String addProductToCartById(@RequestParam(defaultValue="-1") long productId, HttpSession session) {
         //session.setAttribute("loginUser", "1,2");
         long userId = session.getAttribute("loginUser") != null ? Long.parseLong(session.getAttribute("loginUser").toString().split(",")[0]) : -1;
         JSONObject outputJson = cartService.getAddProductToCartByIdResultModel(userId, productId);

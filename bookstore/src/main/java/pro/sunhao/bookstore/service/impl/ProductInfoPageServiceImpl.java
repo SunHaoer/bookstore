@@ -4,12 +4,9 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pro.sunhao.bookstore.dao.ProductInfoDao;
-import pro.sunhao.bookstore.info.ProductKindList;
 import pro.sunhao.bookstore.pojo.ProductBase;
 import pro.sunhao.bookstore.service.ProductInfoPageService;
-import pro.sunhao.bookstore.util.ImageUtil;
 import pro.sunhao.bookstore.util.OperateJson;
-import pro.sunhao.bookstore.viewmodel.ProductInfoViewModel;
 
 @Service
 public class ProductInfoPageServiceImpl implements ProductInfoPageService {
@@ -27,8 +24,6 @@ public class ProductInfoPageServiceImpl implements ProductInfoPageService {
             OperateJson.putProductKindList(outputJson);
             try {
                 ProductBase product = productInfoDao.selectProductInfoById(productId);
-                //byte productImage[] = ImageUtil.getImageByPath(productBase.getProductImagePath());
-                //ProductInfoViewModel product = new ProductInfoViewModel(productBase.getProductId(), productBase.getProductName(), productBase.getProductPrice(), productBase.getProductDesc(), productBase.getProductCount(), productImage);
                 outputJson.put("productInfo", product);
                 OperateJson.putSuccess(outputJson, true);
             } catch (Exception e) {
