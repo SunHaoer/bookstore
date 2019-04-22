@@ -18,6 +18,9 @@ component('homePage', {
 						if (data.loginUsername != null) {
 							$scope.loginUsername = data.loginUsername;
 							$scope.isLogin = true;
+							if($scope.loginUsername == 'admin') {
+								$scope.isAdmin = true;
+							}
 						} 
 					} else {
 						$scope.message = 'error';

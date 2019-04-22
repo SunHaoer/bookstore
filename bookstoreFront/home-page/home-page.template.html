@@ -1,5 +1,17 @@
 <link rel="stylesheet" href="css/index.css" />
 
+<div id="line1">
+	<div ng-if="!isLogin">
+		<a href="#!/bookstore/loginPage">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="#!/bookstore/registerPage">注册</a>
+	</div>
+	<div ng-if="isLogin">
+		欢迎回来，{{loginUsername}}&nbsp;&nbsp;|&nbsp;
+		<a ng-click="logout()">登出</a>&nbsp;&nbsp;|&nbsp;
+		<a href="#!/bookstore/manageProduct">管理商品</a>
+	</div>
+</div>
+
 <!-- 引入header的内容 -->
 <div ng-include="'include/header.html'"></div>
 
@@ -7,31 +19,31 @@
 <div id="index">
 
 	<div id="line1">
-		<a href="#!/bookstore/productList"><img src="img/index/banner_big.jpg" /><a>
+		<a name="image" href="#!/bookstore/productList"><img name="bigImg" src="img/index/bigImage.jpg" /><a>
 	</div>
 
 	<div id="line3">
-		<img src="img/index/adv_l1.jpg" />
-		<img src="img/index/adv_l1.jpg" />
-		<img src="img/index/adv_l1.jpg" />
-		<img src="img/index/adv_l1.jpg" />
-		<img src="img/index/adv_l1.jpg" />
-		<img src="img/index/adv_l1.jpg" />
-		<img src="img/index/adv_l1.jpg" />
-		<img src="img/index/adv_l1.jpg" />
+		<a href="#!/bookstore/productList" name="image"><img name="listImg" src="img/index/index_1.jpg" /></a> 
+		<a href="#!/bookstore/productList" name="image"><img name="listImg" src="img/index/index_2.jpg" /></a> 
+		<a href="#!/bookstore/productList" name="image"><img name="listImg" src="img/index/index_3.jpg" /></a> 
+		<a href="#!/bookstore/productList" name="image"><img name="listImg" src="img/index/index_4.jpg" /></a> 
+		<a href="#!/bookstore/productList" name="image"><img name="listImg" src="img/index/index_5.jpg" /></a> 
+		<a href="#!/bookstore/productList" name="image"><img name="listImg" src="img/index/index_6.jpg" /></a> 
+		<a href="#!/bookstore/productList" name="image"><img name="listImg" src="img/index/index_7.jpg" /></a> 
+		<a href="#!/bookstore/productList" name="image"><img name="listImg" src="img/index/index_8.jpg" /></a> 
 	</div>
 	<div id="line5">
 		<span id="line5_1">
-			<img src="img/index/icon_g1.png" />&nbsp;&nbsp;500强企业 品质保证
+			<img src="img/index/icon_g1.png" />&nbsp;&nbsp;优秀书店 品质保证
 		</span>
 		<span id="line5_2">
 			<img src="img/index/icon_g2.png" />&nbsp;&nbsp;7天退货 15天换货
 		</span>
 		<span id="line5_3">
-			<img src="img/index/icon_g3.png" />&nbsp;&nbsp;100元起免运费
+			<img src="img/index/icon_g3.png" />&nbsp;&nbsp;1024元起免运费
 		</span>
 		<span id="line5_4">
-			<img src="img/index/icon_g4.png" />&nbsp;&nbsp;448家维修网点 全国联保
+			<img src="img/index/icon_g4.png" />&nbsp;&nbsp;顺丰速递 就是快
 		</span>
 	</div>
 </div>

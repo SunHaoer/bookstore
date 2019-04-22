@@ -38,7 +38,7 @@ component('registerPage', {
 							$scope.validateUsernameMessage = 'username is exsited';
 						}
 					} else {
-						$scope.validateUsernameMessage = 'database error';
+						$scope.validateUsernameMessage = data.message;
 					}
 				}),
 				function error(response) {
