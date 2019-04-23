@@ -7,15 +7,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-@SpringBootApplication(exclude = PageHelperAutoConfiguration.class)
+@SpringBootApplication
 @MapperScan("pro.sunhao.bookstore.dao")
-public class BookstoreApplication extends SpringBootServletInitializer {
+public class BookstoreApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BookstoreApplication.class, args);
     }
 
-    @Override
+    //@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(BookstoreApplication.class);
     }

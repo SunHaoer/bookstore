@@ -9,7 +9,7 @@
 			<span class="input_span">商品名：<input type="text" name="name" ng-model="searchStr" value="{{searchStr}}" /></span>
 			<span class="input_span">商品种类：<input type="text" name="category" ng-model="productKind" value="{{productKind}}" /></span>
 			<span class="input_span">商品价格区间：<input type="text" name="minprice" ng-model="priceLow" value="priceLow" /> - <input type="text" name="maxprice" ng-model="priceHigh" value="priceHigh" /></span>
-			<input type="submit" value="查 询" ng-click="getProductListModel()">
+			<input type="submit" value="查 询" ng-click="getProductListModel(1)">
 		</div>
 	</div>
 	
@@ -32,4 +32,9 @@
 		</div>
 		<div style="clear: both"></div>
 	</div>
+	<div align="right">
+		<a href="" ng-click="getProductListModel(pageNum - 1)" ng-if="pageNum != 1">上一页</a>
+		<a>当前第{{pageNum}}页</a>
+		<a href="" ng-click="getProductListModel(pageNum + 1)" ng-if="pageNum != pagesCount">下一页</a>
+	<div>
 </div>

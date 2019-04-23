@@ -7,8 +7,8 @@
 	</div>
 	<div ng-if="isLogin">
 		欢迎回来，{{loginUsername}}&nbsp;&nbsp;|&nbsp;
-		<a ng-click="logout()">登出</a>&nbsp;&nbsp;|&nbsp;
-		<a href="#!/bookstore/manageProduct">管理商品</a>
+		<a href="" ng-click="logout()">登出</a>&nbsp;&nbsp;|&nbsp;
+		<a href="#!/bookstore/manageProduct" ng-show="isAdmin">管理商品</a>
 	</div>
 </div>
 
@@ -22,7 +22,7 @@
 		<a name="image" href="#!/bookstore/productList"><img name="bigImg" src="img/index/bigImage.jpg" /><a>
 	</div>
 
-	<div id="line3">
+	<div id="line3"
 		<a href="#!/bookstore/productList" name="image"><img name="listImg" src="img/index/index_1.jpg" /></a> 
 		<a href="#!/bookstore/productList" name="image"><img name="listImg" src="img/index/index_2.jpg" /></a> 
 		<a href="#!/bookstore/productList" name="image"><img name="listImg" src="img/index/index_3.jpg" /></a> 

@@ -21,7 +21,7 @@ public class ProductInfoPageServiceImpl implements ProductInfoPageService {
         if(productId == -1) {
             OperateJson.putParameterNull(outputJson);
         } else {
-            OperateJson.putProductKindList(outputJson);
+            //OperateJson.putProductKindList(outputJson);
             try {
                 ProductBase product = productInfoDao.selectProductInfoById(productId);
                 outputJson.put("productInfo", product);

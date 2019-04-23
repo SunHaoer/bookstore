@@ -2,10 +2,10 @@ angular.
     module('productList').
     component('productList', {
         templateUrl: 'product-list/product-list.template.html',
-        controller: ['$scope', '$http', '$location', function RegisterPageCtrl($scope, $http, $location) {
+        controller: ['$scope', '$http', '$location', function ($scope, $http, $location) {
 					 
 					 $scope.getProductListModelMessage = '';
-					 $scope.getProductListModel = function () {
+					 $scope.getProductListModel = function (pageNum) {
 						var productKind = $location.search()['productKind'];
 					 	$http({
 					 		withCredentials: true,
@@ -15,7 +15,8 @@ angular.
 					 			searchStr: $scope.searchStr,
 								productKind: $scope.productKind,
 								priceLow: $scope.priceLow,
-								priceHigh: $scope.priceHigh
+								priceHigh: $scope.priceHigh,
+								pageNum: pageNum
 					 		}),
 					 	}).then(function success(response) {
 					 		var data = response.data;
@@ -23,6 +24,8 @@ angular.
 					 			var product = data.productList;
 					 			$scope.productKindList = data.productKindList;
 					 			$scope.productList = data.productList;
+								$scope.pageNum = data.pageNum;
+								$scope.pagesCount = data.pagesCount;
 								//console.log($scope.productList);
 					 		} else {
 					 			$scope.getProductListModelMessage = 'not success';
@@ -31,7 +34,8 @@ angular.
 					 		$scope.getProductListModelMessage = 'network error';
 					 	}
 					 }
-					 $scope.getProductListModel();
+					 $scope.getProductListModel(1);
+					 
             
         }]
     })

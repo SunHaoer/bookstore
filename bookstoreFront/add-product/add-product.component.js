@@ -20,6 +20,8 @@ component('addProduct', {
 				if (data.success) {
 					alert('success');
 					document.getElementById("addProductForm").reset();
+				} else {
+					alert('not limit');
 				}
 			}, function(response) {
 				alert('error')

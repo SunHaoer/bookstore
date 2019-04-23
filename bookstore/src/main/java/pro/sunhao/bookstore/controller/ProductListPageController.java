@@ -1,6 +1,7 @@
 package pro.sunhao.bookstore.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +23,9 @@ public class ProductListPageController {
             @RequestParam(defaultValue = "") String searchStr, @RequestParam(defaultValue = "") String productKind,
             @RequestParam(defaultValue = "0") double priceLow, @RequestParam(defaultValue = Double.MAX_VALUE + "") double priceHigh,
             @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        JSONObject outputJson = productListPageService.getProductListPageViewModel(searchStr, productKind, priceLow, priceHigh);
+        Page page = PageHelper.startPage(pageNum, pageSize);
+        JSONObject outputJson = productListPageService.getProductListPageViewModel(searchStr, productKind, priceLow, priceHigh, page, pageNum);
+
         return outputJson.toString();
     }
 }

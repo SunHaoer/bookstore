@@ -47,7 +47,7 @@ component('productInfo', {
 					if (data.success) {
 						alert('success');
 					} else {
-						alert(data.message);
+						alert('please login');
 					}
 				}),
 				function error(response) {

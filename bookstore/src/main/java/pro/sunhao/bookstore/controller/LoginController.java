@@ -35,11 +35,4 @@ public class LoginController {
         return outputJson.toString();
     }
 
-    @RequestMapping(value="/notLimit")
-    public String notLimit() {
-        JSONObject outputJson = loginService.getNotLimitResultModel();
-        System.out.println("not login");
-        return outputJson.toString();
-    }
-
 }

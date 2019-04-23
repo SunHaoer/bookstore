@@ -17,7 +17,7 @@ public class OperateJson {
 
     public static void putDataBaseError(JSONObject json) { json.put("message", "database error"); }
 
-    public static void putProductKindList(JSONObject json) { json.put("productKindList", ProductKindList.productKindList); }
+    //public static void putProductKindList(JSONObject json) { json.put("productKindList", ProductKindList.productKindList); }
 
     public static void putIsLegal(JSONObject json, boolean value) { json.put("isLegal", value); }
 
