@@ -59,7 +59,7 @@ public class CartServiceImpl implements CartService {
                     cartDao.subProductById(userId, productId);
                 }
                 OperateJson.putSuccess(outputJson, true);
-            } catch (Exception e) {
+            } catch (RuntimeException e) {
                 e.printStackTrace();
                 OperateJson.putDataBaseError(outputJson);
             }

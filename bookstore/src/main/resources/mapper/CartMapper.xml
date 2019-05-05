@@ -32,9 +32,9 @@
     </update>
 
     <select id="getProductCartViewModel" resultType="pro.sunhao.bookstore.viewmodel.ProductCartViewModel">
-        select product_base.product_id, product_base.product_name, product_base.product_price, product_base.product_image_path, user1_cart.product_num
+        select product_base.product_id, product_base.product_name, product_base.product_price, product_base.product_image_path, user#{userId}_cart.product_num
         from user#{userId}_cart left join product_base
-        on user1_cart.product_id=product_base.product_id
+        on user#{userId}_cart.product_id=product_base.product_id
     </select>
 
 </mapper>
