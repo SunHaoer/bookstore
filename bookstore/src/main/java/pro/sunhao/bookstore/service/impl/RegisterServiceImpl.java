@@ -38,8 +38,8 @@ public class RegisterServiceImpl implements RegisterService {
                 try {       // 此处需要事务回滚绑定
                     UserBase user = new UserBase(username, password, gender, phone);
                     registerDao.insertUser(user);
-                    long id = user.getUserId();
-                    registerDao.createCartTableByUserId(id);
+                    //long id = user.getUserId();
+                    //registerDao.createCartTableByUserId(id);
                     OperateJson.putSuccess(outputJson, true);
                 } catch (Exception e) {
                     OperateJson.putDataBaseError(outputJson);

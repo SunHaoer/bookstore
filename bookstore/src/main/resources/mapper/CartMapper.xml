@@ -8,33 +8,34 @@
 	</select>
 
     <insert id="insertProductById">
-        insert into user#{userId}_cart
-        (product_id, product_num)
+        insert into user_cart
+        (product_id, product_num, user_id)
         VALUES
-        (#{productId}, 1);
+        (#{productId}, 1, #{userId});
     </insert>
 
     <update id="addProductById">
-        update user#{userId}_cart
+        update user_cart
         set product_num=product_num+1
-        where product_id=#{productId}
+        where product_id=#{productId} and user_id=#{userId}
     </update>
 
     <delete id="deleteProductById">
-        delete from user#{userId}_cart
-        where product_id=#{productId}
+        delete from user_cart
+        where product_id=#{productId} and user_id=#{userId}
     </delete>
 
     <update id="subProductById">
-        update user#{userId}_cart
+        update user_cart
         set product_num=product_num-1
-        where product_id=#{productId}
+        where product_id=#{productId} and user_id=#{userId}
     </update>
 
     <select id="getProductCartViewModel" resultType="pro.sunhao.bookstore.viewmodel.ProductCartViewModel">
-        select product_base.product_id, product_base.product_name, product_base.product_price, product_base.product_image_path, user#{userId}_cart.product_num
-        from user#{userId}_cart left join product_base
-        on user#{userId}_cart.product_id=product_base.product_id
+        select product_base.product_id, product_base.product_name, product_base.product_price, product_base.product_image_path, user_cart.product_num
+        from user_cart left join product_base
+        on user_cart.product_id=product_base.product_id
+        where user_id=#{userId}
     </select>
 
 </mapper>

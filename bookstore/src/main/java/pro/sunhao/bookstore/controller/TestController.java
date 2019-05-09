@@ -2,6 +2,12 @@ package pro.sunhao.bookstore.controller;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.mgt.DefaultSecurityManager;
+import org.apache.shiro.realm.SimpleAccountRealm;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.http.MediaType;
@@ -26,35 +32,24 @@ public class TestController {
     @Autowired
     TestService testService;
 
+    SimpleAccountRealm realm = new SimpleAccountRealm();
+
     @RequestMapping("/test")
     @ResponseBody
-    public String test(HttpSession session) {
-        //testService.test("1", "2");
-        //System.out.println(session.getAttribute("lala"));
-        session.setAttribute("lala", "sun,hao");
-        String str = session.getAttribute("lala").toString();
-        System.out.println("sun".equals(str.split(",")[0]));
-        System.out.println("hao".equals(str.split(",")[1]));
-        return "嘎嘎";
-    }
-
-    @RequestMapping(value = "/getImage" , method = RequestMethod.GET, produces = {
-            MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_PNG_VALUE })
-    @ResponseBody
-    public String getImg() {
-        System.out.println(ResourceUtils.CLASSPATH_URL_PREFIX + "static/productKindImg1.jpg");
-        Path path = Paths.get(ResourceUtils.CLASSPATH_URL_PREFIX + "static/productKindImg1.jpg");
-
-        byte[] data = null;
+    public String test() {
+        realm.addAccount("dillon", "sun");
+        DefaultSecurityManager defaultSecurityManager = new DefaultSecurityManager();
+        defaultSecurityManager.setRealm(realm);
+        System.out.println("1");
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken("dillon", "sunhao");
         try {
-            data = Files.readAllBytes(path);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
+            subject.login(token);
+            System.out.println("ke yi deng lu");
+        } catch (AuthenticationException e) {
+            System.out.println("yi chang");
             e.printStackTrace();
         }
-        JSONObject outputJson = new JSONObject();
-        outputJson.put("image", data);
-        return outputJson.toString();
+        return "嘎嘎";
     }
-
 }

@@ -34,8 +34,7 @@ public class AddProductController {
                                        @RequestParam(defaultValue = "") String productKind, @RequestParam(defaultValue = "-1") int productCount,
                                        @RequestParam(defaultValue = "") MultipartFile productImage, @RequestParam(defaultValue = "") String productDesc,
                                        HttpSession session ) {
-
-        String uri = request.getScheme() +"://" + request.getServerName() + ":" +request.getServerPort() + "/" + request.getContextPath();
+        String uri = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/" + request.getContextPath();
         JSONObject outputJson = addProductService.getAddProductResultModel(productName, productPrice, productKind, productCount, productImage, productDesc, uri);
         return outputJson.toString();
     }

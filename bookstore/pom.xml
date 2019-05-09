@@ -53,6 +53,13 @@
             <scope>true</scope>
         </dependency>
 
+        <!-- shiro -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring-boot-starter</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
         <!-- 允许访问static下的静态资源 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
